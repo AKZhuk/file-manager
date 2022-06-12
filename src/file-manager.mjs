@@ -2,7 +2,7 @@ import { stdin, stdout } from 'process';
 import readline from 'readline';
 import { homedir } from 'os';
 import { cd, list, up } from './commands/navigation.mjs';
-import { parseArgs, printDirectory } from './helpers.mjs';
+import { getUserName, parseArgs, printDirectory } from './helpers.mjs';
 import { compress, decompress } from './commands/zip.js';
 import { add, cat, copy, move, remove } from './commands/fs.mjs';
 import { calculateHash } from './commands/hash.mjs';
@@ -27,7 +27,7 @@ const commands = {
 
 const messages = {
   error: `Operation failed\r\n`,
-  welcome: 'Welcome to the File Manager, Username!\r\n',
+  welcome: 'Welcome to the File Manager,',
   thanks: 'Thank you for using File Manager, Username!',
 };
 
@@ -38,7 +38,7 @@ export const rl = readline.createInterface({
 
 const FileManager = () => {
   process.chdir(homedir());
-  console.log(messages.welcome);
+  console.log(`${messages.welcome} ${getUserName()} \r\n`);
   rl.prompt(true);
 
   rl.on('line', (line, ...rest) => {
