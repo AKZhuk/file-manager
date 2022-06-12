@@ -1,7 +1,8 @@
 import fs from 'fs';
+import { homedir } from 'os';
 
 export const up = () => {
-  process.chdir('../');
+  if (homedir() !== process.cwd()) process.chdir('../');
 };
 
 export const cd = (args) => {
