@@ -4,7 +4,7 @@ import { homedir, userInfo, cpus, arch, EOL } from 'os';
 export const printOsInfo = (arg) => {
   switch (arg) {
     case '--EOL':
-      console.log(EOL);
+      console.log(JSON.stringify(EOL));
       break;
     case '--cpus':
       console.log('Total amount:' + cpus().length + ', ' + cpus()[0].model);
