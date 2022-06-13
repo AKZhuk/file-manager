@@ -7,5 +7,5 @@ export const parseArgs = (line) => {
 export const getUserName = () => process.argv[2].split('=')[1];
 
 export const printError = () => {
-  rl.write(`\nOperation failed`);
+  rl.write(`\nOperation failed\r\n`);
 };

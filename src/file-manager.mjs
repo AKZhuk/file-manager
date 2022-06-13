@@ -2,7 +2,7 @@ import { stdin, stdout } from 'process';
 import readline from 'readline';
 import { homedir } from 'os';
 import { cd, list, up } from './commands/navigation.mjs';
-import { getUserName, parseArgs } from './helpers.mjs';
+import { getUserName, parseArgs, printError } from './helpers.mjs';
 import { compress, decompress } from './commands/zip.js';
 import { add, cat, copy, move, remove } from './commands/fs.mjs';
 import { calculateHash } from './commands/hash.mjs';
@@ -48,7 +48,7 @@ const FileManager = () => {
 
     if (commands.hasOwnProperty(command)) {
       commands[command](...args);
-      console.log(`${messages.directory} ${process.cwd()}`);
+      command !== '.exit' && console.log(`${messages.directory} ${process.cwd()}`);
     } else if (!messages.hasOwnProperty(line)) {
       console.log('invalid input\r\n');
     }

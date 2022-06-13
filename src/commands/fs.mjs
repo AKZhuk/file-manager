@@ -12,13 +12,13 @@ export const cat = async (path) => {
 export const add = async (fileName) => {
   fs.existsSync(`${process.cwd()}/${fileName}`) && printError();
   fs.writeFile(`${process.cwd()}/${fileName}`, '', (err) => {
-    printError();
+    err && printError();
   });
 };
 
 export const remove = async (path) => {
   if (fs.existsSync(path)) {
-    fs.rm(path, (err) => printError());
+    fs.rm(path, (err) => err && printError());
   } else {
     printError();
   }
