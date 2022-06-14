@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import { printError } from '../helpers.mjs';
 
 export const cat = async (path) => {
@@ -33,8 +34,10 @@ export const rename = async (pathToFile, newFilename) => {
 };
 
 export const copy = async (pathToFile, pathToNewDirectory) => {
+  const ext = path.extname(pathToFile);
+  const newPath = pathToNewDirectory.includes(ext) ? pathToNewDirectory : `${pathToNewDirectory}/newFile${ext}`;
   if (fs.existsSync(pathToFile)) {
-    fs.copyFile(pathToFile, pathToNewDirectory, (err) => err && printError());
+    fs.copyFile(pathToFile, newPath, (err) => err && printError());
   } else printError();
 };
 
