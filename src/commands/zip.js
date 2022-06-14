@@ -3,8 +3,8 @@ import fs from 'fs';
 import { pipeline } from 'stream';
 import { printError } from '../helpers.mjs';
 
-export const decompress = async (pathToFile, pathToDestination = './decompree.txt') => {
-  const gzip = zlib.createUnzip();
+export const decompress = async (pathToFile, pathToDestination = './decompress.txt') => {
+  const gzip = zlib.createBrotliDecompress();
 
   try {
     const out = fs.createReadStream(pathToFile);
@@ -20,8 +20,8 @@ export const decompress = async (pathToFile, pathToDestination = './decompree.tx
   }
 };
 
-export const compress = async (pathToFile, pathToDestination = './archive.gzip') => {
-  const gzip = zlib.createGzip();
+export const compress = async (pathToFile, pathToDestination = './archive.txt.br') => {
+  const gzip = zlib.createBrotliCompress();
 
   const inp = fs.createReadStream(pathToFile);
   const out = fs.createWriteStream(pathToDestination);
