@@ -1,0 +1,22 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "This repository for file-manager inplementing on NodeJS",
+  "main": "file-manager.js",
+  "bin": "./src/file-manager.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/file-manager.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AKZhuk/file-manager.git"
+  },
+  "author": "Aliaksei Zhuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AKZhuk/file-manager/issues"
+  },
+  "homepage": "https://github.com/AKZhuk/file-manager#readme"
+}
